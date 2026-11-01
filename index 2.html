@@ -1,0 +1,144 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="kk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Білім таразысы</title>
+<style>
+:root{color-scheme:dark;box-sizing:border-box}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#020b1f}
+body{font-family:"Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;color:#fff3d6}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform-origin:center;overflow:hidden;
+background:radial-gradient(ellipse at 50% 52%,#0d3b78 0,#07224f 45%,#020b1f 85%),
+repeating-linear-gradient(45deg,rgba(255,215,120,.035) 0 2px,transparent 2px 36px),repeating-linear-gradient(-45deg,rgba(255,215,120,.035) 0 2px,transparent 2px 36px)}
+.ui{position:absolute;left:0;width:100%;text-align:center;z-index:4;pointer-events:none;transition:opacity 1s}
+#t1{top:10px;font-size:56px;font-weight:700;letter-spacing:1px;background:linear-gradient(180deg,#fff6c9,#e8b840 55%,#9a6a14);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 6px rgba(0,0,0,.7))}
+#t2{top:80px;font-size:30px;font-style:italic;color:#bff7ee;letter-spacing:3px;text-shadow:0 0 14px rgba(0,229,200,.6)}
+#t2:before,#t2:after{content:"◆";color:#e8b840;margin:0 18px;font-size:18px;font-style:normal}
+#cn{top:812px;font-size:28px;color:#ffe9a8}
+#cnt b{color:#fff;font-size:34px}
+#slots{display:flex;gap:14px;justify-content:center;margin-top:8px}
+#slots i{width:30px;height:30px;border-radius:50%;background:#12335e;box-shadow:inset 0 2px 4px #000;transition:.5s;font-style:normal;font-size:16px;line-height:30px;color:#5d7bb0}
+#slots i.on{background:radial-gradient(circle at 35% 30%,#fff3c8,#f6c343 55%,#c4840f);box-shadow:0 0 12px #ffd978;color:#5b3a00;font-weight:700}
+#hint{position:absolute;left:0;width:100%;top:145px;text-align:center;z-index:4;pointer-events:none}
+#hint span{display:inline-block;font-size:26px;color:#ffe08a;background:rgba(2,11,31,.75);padding:8px 26px;border-radius:30px;border:2px solid rgba(217,162,43,.7);animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-7px)}}
+.done #cn,.done #hint{opacity:0}
+#sc{position:absolute;left:0;top:0;width:1600px;height:900px;filter:drop-shadow(0 22px 20px rgba(0,0,0,.6))}
+#sc.glow{animation:glow 3s ease-in-out infinite}
+@keyframes glow{50%{filter:drop-shadow(0 0 26px rgba(255,210,100,.95)) drop-shadow(0 22px 20px rgba(0,0,0,.6))}}
+#chest{cursor:pointer}
+#chest:hover .cb{filter:brightness(1.15)}
+#ov{position:absolute;inset:0;background:rgba(2,9,26,.72);display:none;align-items:center;justify-content:center;z-index:10;perspective:1200px}
+#ov.on{display:flex}
+#card{position:relative;width:940px;padding:56px 80px 50px;text-align:center;border-radius:26px;animation:cd .8s cubic-bezier(.2,.9,.3,1.1);
+background:radial-gradient(ellipse at 50% 0,#14509c,#082a5e 60%,#051a3e);border:8px solid #d9a22b;
+box-shadow:0 0 0 3px #7a5416,0 0 60px rgba(255,210,100,.5),0 40px 60px rgba(0,0,0,.7),inset 0 0 40px rgba(0,0,0,.5)}
+@keyframes cd{from{transform:translateY(260px) scale(.1) rotateY(180deg);opacity:0}}
+#card.away{animation:aw .45s ease-in forwards}
+@keyframes aw{to{transform:translate(260px,-120px) scale(.08) rotate(25deg);opacity:0}}
+#card:before{content:"";position:absolute;inset:14px;border:2px dashed #5ff2e0;border-radius:16px;pointer-events:none;opacity:.75}
+#qn{margin:0 0 12px;font-size:24px;letter-spacing:4px;color:#9fe9df;text-transform:uppercase}
+#qi{font-size:64px;line-height:1;margin-bottom:10px}
+#qt{margin:0 0 14px;font-size:46px;line-height:1.3;color:#fff7dc;text-shadow:0 2px 6px rgba(0,0,0,.7)}
+#qs{margin:0 0 30px;font-size:24px;font-style:italic;color:#ffe08a}
+.btn{font:inherit;font-size:26px;padding:14px 44px;border-radius:40px;border:3px solid #7a5416;cursor:pointer;color:#3a2400;background:linear-gradient(#fff1a8,#e0a92f 60%,#a8741a);box-shadow:0 8px 16px rgba(0,0,0,.5),inset 0 2px 3px #fff8;transition:transform .2s}
+.btn:hover{transform:translateY(-3px) scale(1.04)}
+.btn:disabled{filter:grayscale(.6);cursor:default}
+#fnl{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:8;opacity:0;transition:opacity 1.6s;background:radial-gradient(ellipse at 50% 50%,rgba(2,10,30,.9) 30%,transparent 72%)}
+#fnl.on{display:flex}#fnl.show{opacity:1}
+#fw{width:1150px;text-align:center}
+.rib{display:inline-block;font-size:34px;font-weight:700;letter-spacing:3px;color:#3a2400;background:linear-gradient(#fff1a8,#e0a92f 60%,#a8741a);padding:12px 40px;border-radius:16px;box-shadow:0 6px 0 #7a5416,0 14px 24px rgba(0,0,0,.5);margin-bottom:28px}
+#ft{margin:0 0 18px;font-size:44px;line-height:1.4;font-weight:700;background:linear-gradient(180deg,#fff9d8,#f0c24a 70%,#c58a1c);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 8px rgba(0,0,0,.8))}
+#fq{margin:0 0 36px;font-size:32px;font-style:italic;color:#bff7ee;text-shadow:0 0 14px rgba(0,229,200,.6)}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
+#help{position:absolute;right:24px;bottom:20px;z-index:6;font-size:20px;padding:10px 22px}
+#hp{position:absolute;inset:0;background:rgba(2,9,26,.8);display:none;align-items:center;justify-content:center;z-index:12}
+#hp.on{display:flex}
+#hp div{width:980px;background:#082a5e;border:6px solid #d9a22b;border-radius:22px;padding:36px 50px;font-size:24px;line-height:1.5;color:#fff7dc}
+#hp h3{margin:0 0 10px;font-size:32px;color:#ffd978}
+#hp ol{margin:0 0 20px;padding-left:28px}
+</style></head><body>
+<div id="stage">
+ <svg id="sc" viewBox="0 0 1600 900"></svg>
+ <div id="hit" title="Сандық" style="position:absolute;left:630px;top:600px;width:340px;height:185px;cursor:pointer;z-index:3"></div>
+ <div class="ui" id="t1">Білім таразысы</div>
+ <div class="ui" id="t2">Рефлексия · «Сөйлемді толықтыр»</div>
+ <div id="hint"><span id="hintT">Сандықты бас — сұрақ шығады</span></div>
+ <div class="ui" id="cn"><div id="cnt"></div><div id="slots"></div></div>
+ <button class="btn" id="help">Нұсқаулық</button>
+ <div id="ov"><div id="card"><p id="qn"></p><div id="qi"></div><p id="qt"></p><p id="qs">Сөйлемді ауызша толықтыр</p><button class="btn" id="ok">Жауап қабылданды</button></div></div>
+ <div id="fnl"><div id="fw"><div class="rib">ӘДІЛДІК • ЖАУАПКЕРШІЛІК</div><p id="ft">Таразы теңелді! Әр шынайы жауап — біліміміздің салмағы. Сабаққа рахмет!</p><p id="fq">«Жауапкершілік адамды адам етеді»</p><button class="btn" id="rs">Қайта бастау</button></div></div>
+ <div id="hp"><div><h3>«Білім таразысы» әдісі</h3><ol>
+  <li>Сол жақ табақта — «САБАҚ» кірі. Әр шынайы жауап оң табаққа бір алтын тиын болып түседі.</li>
+  <li>Оқушы тақтаға шығып, <b>сандықты</b> басады — сұрақ шығады.</li>
+  <li>Оқушы сөйлемді ауызша толықтырады.</li>
+  <li>Мұғалім <b>«Жауап қабылданды»</b> батырмасын басады — тиын табаққа түсіп, таразы теңеле бастайды.</li>
+  <li>Бесінші жауаптан кейін таразы теңеледі: «Әділдік • Жауапкершілік».</li></ol>
+  <p>Сұрақтар кездейсоқ ретпен шығады және қайталанбайды. Алғашқы үшеуі — КСП-дағы «Сөйлемді толықтыр» сөйлемдері.</p>
+  <button class="btn" id="hpx">Жабу</button></div></div>
+</div>
+<canvas id="fx"></canvas>
+<script>
+const Q=[
+ {i:"⚖️",t:"«Бүгін мен ... кезде әділ болдым»."},
+ {i:"🛡️",t:"«Жауапкершілікті ... кезде сезіндім»."},
+ {i:"🧩",t:"«Маған ... қиын болды»."},
+ {i:"💡",t:"«Бүгін тығыздық туралы ... білдім»."},
+ {i:"🌍",t:"«Тығыздықты өмірде ... кезде кездестіремін»."}];
+const N=Q.length,$=s=>document.querySelector(s),st=$('#stage'),sc=$('#sc');
+const PX=800,PY=290,HL=300,HG=180,MAX=13;
+let th=MAX,om=0,target=MAX,coins=0,order=[],idx=0,busy=false,done=false,fall=null,last=0;
+const DEF='<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1a8"/><stop offset=".5" stop-color="#d9a22b"/><stop offset="1" stop-color="#8a5f12"/></linearGradient><linearGradient id="w" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9a35f"/><stop offset=".5" stop-color="#7a4a1e"/><stop offset="1" stop-color="#e0b070"/></linearGradient><radialGradient id="pan" cx=".5" cy=".2" r=".9"><stop offset="0" stop-color="#fff1a8"/><stop offset=".6" stop-color="#c8901f"/><stop offset="1" stop-color="#6b4710"/></radialGradient><radialGradient id="coin" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff3c8"/><stop offset=".55" stop-color="#f6c343"/><stop offset="1" stop-color="#c4840f"/></radialGradient><linearGradient id="chestG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14509c"/><stop offset="1" stop-color="#051a3e"/></linearGradient><linearGradient id="kir" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0b3a9c"/><stop offset=".5" stop-color="#4f7fe0"/><stop offset="1" stop-color="#082a5e"/></linearGradient><radialGradient id="glw" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff6cf" stop-opacity=".9"/><stop offset="1" stop-color="#f6c343" stop-opacity="0"/></radialGradient></defs>';
+const H='M50 76C26 76 16 52 29 39C40 29 57 37 52 49C50 55 42 54 43 49';
+const orn=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})" fill="none" stroke="#f6c343" stroke-width="5" stroke-linecap="round"><path d="${H}"/><path d="${H}" transform="translate(100 0) scale(-1 1)"/></g>`;
+function ends(){const r=th*Math.PI/180;return{L:{x:PX-HL*Math.cos(r),y:PY+HL*Math.sin(r)},R:{x:PX+HL*Math.cos(r),y:PY-HL*Math.sin(r)}}}
+function pan(e,inner){const y=e.y+HG;return `<line x1="${e.x}" y1="${e.y}" x2="${e.x-115}" y2="${y}" stroke="#e8c25a" stroke-width="2.5"/><line x1="${e.x}" y1="${e.y}" x2="${e.x+115}" y2="${y}" stroke="#e8c25a" stroke-width="2.5"/>${inner}<path d="M${e.x-130} ${y} Q${e.x} ${y+60} ${e.x+130} ${y} Z" fill="url(#pan)" stroke="#7a5416" stroke-width="3"/><circle cx="${e.x}" cy="${e.y}" r="9" fill="url(#g)" stroke="#7a5416" stroke-width="2"/>`}
+function stack(e,n){const y=e.y+HG;let s='';for(let i=0;i<n;i++){const row=i>=3?1:0,col=row?i-3:i,x=e.x+(row?(col-0.5)*58:(col-1)*58);s+=`<ellipse cx="${x}" cy="${y-8-row*18}" rx="26" ry="10" fill="url(#coin)" stroke="#8a5b06" stroke-width="2"/><text x="${x}" y="${y-3-row*18}" text-anchor="middle" font-size="13" font-weight="700" fill="#7a5416">ρ</text>`}return s}
+function weight(e){const y=e.y+HG;return `<path d="M${e.x-58} ${y} l12 -64 h92 l12 64 z" fill="url(#kir)" stroke="#d9a22b" stroke-width="3"/><rect x="${e.x-18}" y="${y-82}" width="36" height="20" rx="8" fill="none" stroke="#d9a22b" stroke-width="5"/><text x="${e.x}" y="${y-20}" text-anchor="middle" font-size="22" font-weight="700" fill="#fff3d6" font-family="Palatino Linotype,Georgia,serif">САБАҚ</text>`}
+let lidOpen=false,glowOn=false;
+function draw(){const e=ends();let s=DEF;
+ if(glowOn)s+=`<circle cx="800" cy="420" r="420" fill="url(#glw)" opacity=".8"/>`;
+ s+=`<rect x="${PX-14}" y="${PY}" width="28" height="360" rx="8" fill="url(#w)" stroke="#e8c25a" stroke-width="2"/><rect x="${PX-3}" y="${PY+10}" width="6" height="340" fill="url(#g)"/>`;
+ s+=`<path d="M${PX} ${PY-70} L${PX-14} ${PY-30} L${PX+14} ${PY-30} Z" fill="url(#g)" stroke="#7a5416" stroke-width="2"/>`;
+ s+=`<g transform="rotate(${(-th).toFixed(3)} ${PX} ${PY})"><rect x="${PX-HL-10}" y="${PY-9}" width="${2*HL+20}" height="18" rx="9" fill="url(#w)" stroke="#e8c25a" stroke-width="2"/><rect x="${PX-HL}" y="${PY-1.5}" width="${2*HL}" height="3" fill="url(#g)"/></g>`;
+ s+=pan(e.L,weight(e.L))+pan(e.R,stack(e.R,coins));
+ s+=`<circle cx="${PX}" cy="${PY}" r="24" fill="url(#w)" stroke="url(#g)" stroke-width="4"/><circle cx="${PX}" cy="${PY}" r="10" fill="url(#g)"/>`;
+ /* сандық */
+ s+=`<g id="chest">${lidOpen?`<path d="M${PX} 650 L${PX-90} 520 L${PX-50} 520 Z M${PX} 650 L${PX+90} 520 L${PX+50} 520 Z M${PX} 650 L${PX-18} 500 L${PX+18} 500 Z" fill="#fff3c8" opacity=".5"/>`:''}
+  <rect class="cb" x="${PX-150}" y="655" width="300" height="120" rx="14" fill="url(#chestG)" stroke="#d9a22b" stroke-width="5"/>
+  <path d="M${PX-150} 695 h300" stroke="#d9a22b" stroke-width="3" opacity=".8"/>${orn(PX-140,690,.8)}${orn(PX+60,690,.8)}
+  <rect x="${PX-22}" y="685" width="44" height="46" rx="8" fill="url(#g)" stroke="#7a5416" stroke-width="2"/><circle cx="${PX}" cy="703" r="6" fill="#3a2400"/><path d="M${PX} 707 v12" stroke="#3a2400" stroke-width="5"/>
+  <g transform="${lidOpen?`translate(0 -34) rotate(-12 ${PX-158} 660)`:''}"><path d="M${PX-158} 660 q0 -42 42 -42 h232 q42 0 42 42 z" fill="url(#chestG)" stroke="#d9a22b" stroke-width="5"/><path d="M${PX-120} 628 h240" stroke="#5ff2e0" stroke-width="2" stroke-dasharray="6 6" opacity=".8"/></g></g>`;
+ if(fall)s+=`<g transform="translate(${fall.x} ${fall.y})"><ellipse rx="26" ry="10" fill="url(#coin)" stroke="#8a5b06" stroke-width="2"/><path d="M0 16 v34 m-9 -10 9 12 9 -12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></g>`;
+ sc.innerHTML=s}
+function tick(ts){const dt=Math.min(.04,(ts-(last||ts))/1000);last=ts;
+ const a=(target-th)*30-om*3.2;om+=a*dt;th+=om*dt;
+ if(fall){fall.t+=dt;const e=ends(),land=e.R.y+HG-8-(coins>=3?18:0);fall.x=e.R.x;fall.y=-20+.5*1600*fall.t*fall.t;if(fall.y>=land){const cb=fall.cb;fall=null;cb()}}
+ draw();requestAnimationFrame(tick)}
+function upd(){$('#cnt').innerHTML=`Қабылданған жауаптар: <b>${coins}</b> / ${N}`;$('#slots').innerHTML=Q.map((_,i)=>`<i class="${i<coins?'on':''}">${i+1}</i>`).join('')}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function openChest(){if(busy||done)return;busy=true;lidOpen=true;$('#hint').style.visibility='hidden';
+ const q=Q[order[idx]];$('#qn').textContent=`${idx+1}-сұрақ / ${N}`;$('#qi').textContent=q.i;$('#qt').textContent=q.t;
+ const c=$('#card');c.className='';$('#ov').classList.add('on');void c.offsetWidth;$('#ok').disabled=false;burstAt(800,640,30,3)}
+$('#ok').onclick=()=>{if(!busy)return;$('#ok').disabled=true;$('#card').className='away';
+ setTimeout(()=>{$('#ov').classList.remove('on');lidOpen=false;fall={t:0,x:0,y:-20,cb:landed}},430)};
+function landed(){coins++;idx++;target=MAX*(1-coins/N);om-=55;upd();const e=ends();burstAt(e.R.x,e.R.y+HG-10,26,2.5);
+ if(coins>=N){done=true;setTimeout(finale,1300)}else{busy=false;$('#hintT').textContent='Келесі оқушы — сандықты бас';$('#hint').style.visibility='visible'}}
+function finale(){st.classList.add('done');sc.classList.add('glow');glowOn=true;
+ let k=0;const iv=setInterval(()=>{burstAt(200+Math.random()*1200,150+Math.random()*500,14,2.5);if(++k>14)clearInterval(iv)},150);
+ setTimeout(()=>{$('#fnl').classList.add('on');setTimeout(()=>$('#fnl').classList.add('show'),50)},1600)}
+function reset(){order=shuffle([0,1,2,3,4]);idx=0;coins=0;target=MAX;th=MAX;om=0;fall=null;busy=false;done=false;lidOpen=false;glowOn=false;
+ st.classList.remove('done');sc.classList.remove('glow');$('#fnl').classList.remove('show','on');$('#ov').classList.remove('on');
+ $('#hintT').textContent='Сандықты бас — сұрақ шығады';$('#hint').style.visibility='visible';upd()}
+$('#rs').onclick=reset;$('#hit').onclick=openChest;$('#help').onclick=()=>$('#hp').classList.add('on');$('#hpx').onclick=()=>$('#hp').classList.remove('on');
+/* бөлшектер */
+const cv=$('#fx'),cx=cv.getContext('2d');let P=[];
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);st.style.transform=`translate(-50%,-50%) scale(${s})`;cv.width=innerWidth;cv.height=innerHeight}
+function burstAt(sx,sy,n,sp){const r=st.getBoundingClientRect(),k=r.width/1600,x=r.left+sx*k,y=r.top+sy*k;for(let i=0;i<n;i++){const a=Math.random()*6.283,s=Math.random()*sp*2+.6;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-.6,l:1,r:1+Math.random()*2.6})}}
+(function fx(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>0);cx.shadowBlur=10;cx.shadowColor='#ffd978';cx.fillStyle='#ffe08a';
+ P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.03;p.l-=.013;cx.globalAlpha=Math.max(p.l,0);cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill()});requestAnimationFrame(fx)})();
+addEventListener('resize',fit);fit();reset();requestAnimationFrame(tick);
+</script></body></html>
+
+</body></html>
